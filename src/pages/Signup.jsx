@@ -20,6 +20,7 @@ export default function Signup(){
         const res = await service.register(username, mail, token);
         console.log(res)
         if(res.data){
+            auth.setIsAuthenticated(true);
             navigate("/home")
         }
     };
