@@ -45,7 +45,8 @@ label {
 }
 
 input[type="email"],
-[type="password"] {
+[type="password"], 
+[type="text"] {
   display: block;
   padding: 10px;
   box-sizing: border-box;

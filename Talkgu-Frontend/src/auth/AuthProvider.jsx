@@ -38,6 +38,14 @@ export function AuthProvider({ children }) {
         }
     };
 
+    const signupWithEmail = async (username, email, credential) => {
+        try {
+            
+        } catch (error) {
+            console.error("Error al registrarte:", error);
+        }
+    };
+
     // 🔹 Logout (cerrar sesión)
     const logout = async () => {
         try {
