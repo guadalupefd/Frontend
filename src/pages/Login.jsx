@@ -1,27 +1,30 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../auth/AuthProvider";
+import { useNavigate } from "react-router-dom";
 import DefaultLayout from "../layout/DefaultLayout";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import GoogleLoginButton from "../components/GoogleLoginButton";
+import { service } from "../services/api";
+import { useAuth } from "../auth/AuthProvider";
 
 export default function Login() {
     const [mail, setMail] = useState('');
-    const [credential, setCredential] = useState('');
+    const [token, setToken] = useState('');
     const [error, setError] = useState(null); // Estado para manejar errores
-    const auth = useAuth();
+    const navigate = useNavigate(); // Hook para navegar entre páginas
+    const auth = useAuth(); // Hook para acceder al contexto de autenticación
 
-    if (auth.isAuthenticated) {
-        return <Navigate to='/home' />;
-    }
-
+  
     // 🔹 Función para manejar el login con email
     const handleLogin = async (e) => {
         e.preventDefault(); // Evita el envío del formulario por defecto
         setError(null); // Resetear error
 
         try {
-            await auth.loginWithEmail(mail, credential);
+            const user = await service.login(mail, token)
+            if (user) {
+                auth.setIsAuthenticated(true); // Cambia el estado de autenticación
+                navigate('/home'); // Redirige a la página de inicio
+            }
         } catch (err) {
             setError("Error al iniciar sesión. Verifica tu correo y credencial.");
         }
@@ -45,9 +48,9 @@ export default function Login() {
                 <label>Contraseña</label>
                 <input
                     type="password"
-                    name="credencial"
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
+                    name="token"
+                    value={token}
+                    onChange={(e) => setToken(e.target.value)}
                     required
                 />
 
