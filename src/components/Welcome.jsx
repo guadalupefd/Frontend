@@ -1,11 +1,27 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function Welcome(){
+    const navigate = useNavigate();
+    
+    function user(){
+        localStorage.setItem("userType", "user");
+        console.log(localStorage.getItem("userType"));
+        navigate("/Token");
+    }
+    
+    function consultant(){
+        localStorage.setItem("userType", "consultant");
+        console.log(localStorage.getItem("userType"));
+        navigate("/Token");
+    }
+
     return(
         <>
             <h1>Bienvenido a TalkGu</h1>
-            <Link to='/login'><button>Iniciar Sesión</button></Link>
-            <Link to='signup'><h6>¿No tienes una cuenta? Registrate</h6></Link>
+            <button onClick={user}>Quiero hablar</button>
+            <button onClick={consultant}>Soy consultor</button>
         </>
     );
 }

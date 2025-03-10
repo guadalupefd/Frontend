@@ -20,10 +20,15 @@ export default function Login() {
         setError(null); // Resetear error
 
         try {
-            const user = await service.loginUser(mail, token)
+            const user = await service.loginConsultant(mail, token)
             if (user) {
-                auth.setIsAuthenticated(true); // Cambia el estado de autenticación
-                navigate('/home'); // Redirige a la página de inicio
+                if (user.data.reported){ //hay que ver como es en el back y cambiarlo bien
+                    navigate('/denied');
+                }
+                else{
+                    auth.setIsAuthenticated(true); // Cambia el estado de autenticación
+                    navigate('/home-consultant'); // Redirige a la página de inicio  
+                }
             }
         } catch (err) {
             setError("Error al iniciar sesión. Verifica tu correo y credencial.");
@@ -65,7 +70,7 @@ export default function Login() {
                 <button>Usar Facebook</button>
             </div>
 
-            <Link to='/signup'><h6>¿No tienes una cuenta? Regístrate</h6></Link>  
+            <Link to='/signup-consultant'><h6>¿No tienes una cuenta? Regístrate</h6></Link>  
             </div>
             
         </DefaultLayout>

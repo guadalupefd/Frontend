@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
-import "../firebaseConfig"; // Asegúrate de importar tu configuración de Firebase
+import "../firebaseConfig";
 
 const AuthContext = createContext();
 
@@ -29,22 +29,6 @@ export function AuthProvider({ children }) {
         }
     };
 
-    //  Login con email y contraseña
-    const loginWithEmail = async (email, credential) => {
-        try {
-            
-        } catch (error) {
-            console.error("Error al iniciar sesión con email:", error);
-        }
-    };
-
-    const signupWithEmail = async (username, email, credential) => {
-        try {
-            
-        } catch (error) {
-            console.error("Error al registrarte:", error);
-        }
-    };
 
     // 🔹 Logout (cerrar sesión)
     const logout = async () => {
@@ -57,7 +41,7 @@ export function AuthProvider({ children }) {
     };
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, loginWithGoogle, loginWithEmail, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, loginWithGoogle, logout }}>
             {children}
         </AuthContext.Provider>
     );

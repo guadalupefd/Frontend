@@ -17,11 +17,11 @@ export default function Signup(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("Nombre usuario: " + username + "Mail: " + mail + "Token: " + token ); // Verifica en consola antes de enviar
-        const res = await service.registerUser(username, mail, token);
+        const res = await service.registerConsultant(username, mail, token);
         console.log(res)
         if(res.data){
             auth.setIsAuthenticated(true);
-            navigate("/home")
+            navigate("/home-consultant")
         }
     };
 
@@ -63,7 +63,7 @@ export default function Signup(){
 
                 <GoogleLoginButton />
 
-                <Link to='/login'><h6>¿Ya tenés una cuenta? Inicia sesión</h6></Link>  
+                <Link to='/login-consultant'><h6>¿Ya tenés una cuenta? Inicia sesión</h6></Link>  
             </div>
         </DefaultLayout>
     );
