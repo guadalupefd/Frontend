@@ -31,7 +31,8 @@ export function AuthProvider({ children }) {
                                     setIsAuthenticated(true); // Cambia el estado de autenticación
                                     router.navigate('/home-consultant'); // Redirige a la página de inicio  
                                 }
-                            if (!user){
+                            }
+                            else if (!user){
                                 const usuario = {
                                     "username": googleUser.displayName,
                                     "mail": googleUser.email,
@@ -41,7 +42,7 @@ export function AuthProvider({ children }) {
                                 localStorage.setItem("user",JSON.stringify(usuario));
                                 router.navigate('/token');
                             }
-                            }
+                            
                         } catch (err) {
                                 setError("Error al iniciar sesión");
                         }
@@ -58,7 +59,7 @@ export function AuthProvider({ children }) {
                                 navigate('/home'); // Redirige a la página de inicio  
                             }
                         }
-                        if (!user){
+                        else if (!user){
                             const usuario = {
                                 "username": googleUser.displayName,
                                 "mail": googleUser.email,
