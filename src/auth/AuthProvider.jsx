@@ -9,16 +9,6 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
     const auth = getAuth();
 
-    // Escuchar cambios de autenticación
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setIsAuthenticated(!!user); // Si hay usuario, isAuthenticated será true
-            setLoading(false); // Finaliza la carga cuando Firebase responde
-        });
-
-        return () => unsubscribe(); // Limpieza al desmontar
-    }, []);
-
     // Login con Google
     const loginWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
@@ -27,9 +17,52 @@ export function AuthProvider({ children }) {
             console.log("resultado", result);
             const additionalInfo = getAdditionalUserInfo(result);
             console.log("Información adicional:", additionalInfo);
-            const user = auth.currentUser;
+            const googleUser = auth.currentUser;
             const isNewUser = additionalInfo.isNewUser
             console.log("usuario nuevo", isNewUser);
+
+            if (isNewUser){
+                const usuario = {
+                    "username": googleUser.displayName,
+                    "mail": googleUser.email,
+                    "password": googleUser.uid,
+                }
+                localStorage.setItem("user",JSON.stringify(usuario))
+                Navigate('/token')
+            }
+            else if (!isNewUser){
+                if (localStorage.getItem("userType") == "consultant"){
+                    try {
+                        const user = await service.loginConsultant(googleUser.email, googleUser.uid);
+                        console.log("usuario de google", user);
+                            if (user) {
+                                if (user.data.reported){ //hay que ver como es en el back y cambiarlo bien
+                                    navigate('/denied');
+                                    }
+                                else{
+                                    auth.setIsAuthenticated(true); // Cambia el estado de autenticación
+                                    navigate('/home-consultant'); // Redirige a la página de inicio  
+                                }
+                            }
+                        } catch (err) {
+                                setError("Error al iniciar sesión");
+                        }
+                }
+                if (localStorage.getItem("userType") == "user"){
+                    try {
+                        const user = await service.loginUser(googleUser.email, googleUser.uid);
+                        console.log("usuario de google", user);
+                        if (user) {
+                            auth.setIsAuthenticated(true); // Cambia el estado de autenticación
+                            navigate('/home'); // Redirige a la página de inicio  
+                        }
+                        
+                        } catch (err) {
+                                setError("Error al iniciar sesión");
+                        }
+                }
+
+            }
         } catch (error) {
             console.error("Error en autenticación con Google:", error);
         }

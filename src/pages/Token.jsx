@@ -3,7 +3,6 @@ import DefaultLayout from "../layout/DefaultLayout";
 import { service } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthProvider";
-import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Token(){
 

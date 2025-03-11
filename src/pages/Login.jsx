@@ -22,8 +22,13 @@ export default function Login() {
         try {
             const user = await service.loginUser(mail, password)
             if (user) {
-                auth.setIsAuthenticated(true); // Cambia el estado de autenticación
-                navigate('/home'); // Redirige a la página de inicio
+                if (user.data.reported){ //hay que ver como es en el back y cambiarlo bien
+                    navigate('/denied');
+                }
+                else{
+                    auth.setIsAuthenticated(true); // Cambia el estado de autenticación
+                    navigate('/home-consultant'); // Redirige a la página de inicio  
+                }
             }
         } catch (err) {
             setError("Error al iniciar sesión. Verifica tu correo y credencial.");
