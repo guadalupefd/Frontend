@@ -20,7 +20,7 @@ export default function Login() {
         setError(null); // Resetear error
 
         try {
-            const user = await service.loginUser(mail, password)
+            const user = await service.loginConsultant(mail, password)
             if (user) {
                 if (user.data.reported){ //hay que ver como es en el back y cambiarlo bien
                     navigate('/denied');
@@ -31,7 +31,7 @@ export default function Login() {
                 }
             }
         } catch (err) {
-            setError("Error al iniciar sesión. Verifica tu correo y credencial.");
+            setError("Error al iniciar sesión. Verifica tu correo y contraseña.");
         }
     };
 
@@ -66,7 +66,7 @@ export default function Login() {
 
             <GoogleLoginButton />
 
-            <Link to='/signup'><h6>¿No tienes una cuenta? Regístrate</h6></Link>  
+            <Link to='/signup-consultant'><h6>¿No tienes una cuenta? Regístrate</h6></Link>  
             </div>
             
         </DefaultLayout>
