@@ -8,7 +8,7 @@ import { useAuth } from "../auth/AuthProvider";
 
 export default function Login() {
     const [mail, setMail] = useState('');
-    const [token, setToken] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState(null); // Estado para manejar errores
     const navigate = useNavigate(); // Hook para navegar entre páginas
     const auth = useAuth(); // Hook para acceder al contexto de autenticación
@@ -20,7 +20,7 @@ export default function Login() {
         setError(null); // Resetear error
 
         try {
-            const user = await service.loginUser(mail, token)
+            const user = await service.loginUser(mail, password)
             if (user) {
                 auth.setIsAuthenticated(true); // Cambia el estado de autenticación
                 navigate('/home'); // Redirige a la página de inicio
@@ -48,9 +48,9 @@ export default function Login() {
                 <label>Contraseña</label>
                 <input
                     type="password"
-                    name="token"
-                    value={token}
-                    onChange={(e) => setToken(e.target.value)}
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                 />
 
@@ -59,11 +59,7 @@ export default function Login() {
                 <button type="submit">Iniciar Sesión</button>
             </form>
 
-
-            <div className="flex">
-                <GoogleLoginButton />
-                <button>Usar Facebook</button>
-            </div>
+            <GoogleLoginButton />
 
             <Link to='/signup'><h6>¿No tienes una cuenta? Regístrate</h6></Link>  
             </div>

@@ -8,13 +8,13 @@ export default function Welcome(){
     function user(){
         localStorage.setItem("userType", "user");
         console.log(localStorage.getItem("userType"));
-        navigate("/Token");
+        navigate("/login");
     }
     
     function consultant(){
         localStorage.setItem("userType", "consultant");
         console.log(localStorage.getItem("userType"));
-        navigate("/Token");
+        navigate("/login-consultant");
     }
 
     return(
