@@ -1,12 +1,15 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signInWithCredential, getAdditionalUserInfo, GoogleAuthProvider, signOut, signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import "../firebaseConfig";
 
 const AuthContext = createContext();
+const navigate = useNavigate();
 
 export function AuthProvider({ children }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+
     const auth = getAuth();
 
     // Login con Google
@@ -28,7 +31,7 @@ export function AuthProvider({ children }) {
                     "password": googleUser.uid,
                 }
                 localStorage.setItem("user",JSON.stringify(usuario))
-                Navigate('/token')
+                navigate('/token')
             }
             else if (!isNewUser){
                 if (localStorage.getItem("userType") == "consultant"){
