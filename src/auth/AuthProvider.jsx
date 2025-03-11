@@ -21,10 +21,10 @@ export function AuthProvider({ children }) {
 
                 if (localStorage.getItem("userType") == "consultant"){
                     try {
-                        const user = await service.loginConsultant(googleUser.email, googleUser.uid);
-                        console.log("usuario de google", user);
-                            if (user) {
-                                if (user.data.reported){
+                        const consultor = await service.findConsultant(googleUser.email);
+                        console.log("usuario de google", consultor);
+                            if (consultor.data) {
+                                if (consultor.data.reported){
                                     router.navigate('/denied');
                                     }
                                 else{
@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
                                     router.navigate('/home-consultant'); // Redirige a la página de inicio  
                                 }
                             }
-                            else if (!user){
+                            else if (!consultor.data){
                                 const usuario = {
                                     "username": googleUser.displayName,
                                     "mail": googleUser.email,
@@ -49,8 +49,9 @@ export function AuthProvider({ children }) {
                 }
                 if (localStorage.getItem("userType") == "user"){
                     try {
-                        const user = await service.loginUser(googleUser.email, googleUser.uid);
-                        if (user) {
+                        const user = await service.findUser(googleUser.email);
+                        console.log(user);
+                        if (user.data) {
                             if (user.data.reported){
                                 navigate('/denied');
                             }
@@ -59,7 +60,7 @@ export function AuthProvider({ children }) {
                                 navigate('/home'); // Redirige a la página de inicio  
                             }
                         }
-                        else if (!user){
+                        else if (!user.data){
                             const usuario = {
                                 "username": googleUser.displayName,
                                 "mail": googleUser.email,
@@ -70,6 +71,7 @@ export function AuthProvider({ children }) {
                             router.navigate('/token');
                         }
                     } catch (err) {
+                        console.log(err);
                         setError("Error al iniciar sesión.");
                     }
                 }
