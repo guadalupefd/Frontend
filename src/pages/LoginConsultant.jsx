@@ -21,13 +21,13 @@ export default function Login() {
 
         try {
             const user = await service.loginConsultant(mail, password)
-            if (user) {
+            if (user.status === 202) {
                 if (user.data.reported){ //hay que ver como es en el back y cambiarlo bien
                     navigate('/denied');
                 }
                 else{
-                    auth.setIsAuthenticated(true); // Cambia el estado de autenticación
-                    navigate('/home-consultant'); // Redirige a la página de inicio  
+                    localStorage.setItem("consultor", JSON.stringify(user.data));
+                    navigate("/verify-face");
                 }
             }
         } catch (err) {
