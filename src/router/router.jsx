@@ -10,6 +10,8 @@ import LoginConsultant from "../pages/LoginConsultant.jsx"
 import SignupConsultant from "../pages/SignupConsultant.jsx"
 import Denied from "../pages/Denied.jsx"
 import HomeConsultant from "../pages/HomeConsultant.jsx"
+import Webcam from "../pages/Webcam.jsx";
+import VerifyFacePage from "../pages/VerifyFace.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: "/signup-consultant",
         element: <SignupConsultant />,
+      },
+      {
+        path: "/webcam",
+        element: <Webcam />,
+      },
+      {
+        path: "/verify-face",
+        element: <VerifyFacePage />,
       },
       {
         path: "/denied",

@@ -8,7 +8,7 @@ export default function Token(){
 
      const [token, setToken] = useState('');
      const [error, setError] = useState(null);
-    const auth = useAuth();
+     const auth = useAuth();
      const navigate = useNavigate();
 
 
@@ -29,12 +29,8 @@ export default function Token(){
             }
             else if (localStorage.getItem("userType") == "consultant"){
                 try {
-                    const tokenIsAsociated = await service.registerConsultant(usuario.username, usuario.mail, usuario.password, token);
-
-                    if (tokenIsAsociated) {
-                        auth.setIsAuthenticated(true);
-                        navigate('/home');
-                    }
+                    localStorage.setItem("token", token);
+                    navigate('/webcam');
                 } catch (err) {
                     setError("Error al verificar token. Verifica que el token ingresado sea correcto.");
                 }

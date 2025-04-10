@@ -8,10 +8,8 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [error, setError] = useState('');
     const auth = getAuth();
 
-    // Login con Google
     const loginWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
         try {
@@ -28,8 +26,8 @@ export function AuthProvider({ children }) {
                                     router.navigate('/denied');
                                     }
                                 else{
-                                    setIsAuthenticated(true); // Cambia el estado de autenticación
-                                    router.navigate('/home-consultant'); // Redirige a la página de inicio  
+                                    localStorage.setItem("consultor", JSON.stringify(consultor.data));
+                                    router.navigate('/verify-face');  
                                 }
                             }
                             else if (!consultor.data){
@@ -56,8 +54,8 @@ export function AuthProvider({ children }) {
                                 navigate('/denied');
                             }
                             else{
-                                setIsAuthenticated(true); // Cambia el estado de autenticación
-                                navigate('/home'); // Redirige a la página de inicio  
+                                setIsAuthenticated(true);
+                                navigate('/home');
                             }
                         }
                         else if (!user.data){
