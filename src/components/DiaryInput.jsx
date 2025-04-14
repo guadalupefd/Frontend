@@ -9,7 +9,7 @@ export default function DiaryInput({ onSubmit }) {
         if (localStorage.getItem("userType") === "consultant") {
             router.navigate("/home");
         }
-    })
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
