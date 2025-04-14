@@ -13,6 +13,7 @@ import HomeConsultant from "../pages/HomeConsultant.jsx"
 import Webcam from "../pages/Webcam.jsx";
 import VerifyFacePage from "../pages/VerifyFace.jsx";
 import Diary from "../pages/Diary.jsx";
+import Donation from "../pages/Donation.jsx";
 
 const router = createBrowserRouter([
   {
@@ -74,10 +75,10 @@ const router = createBrowserRouter([
         path: "/diary",
         element: <Diary />,
       },
-      // {
-      //   path: "/donation",
-      //   element: <Diary />,
-      // },
+      {
+        path: "/donation",
+        element: <Donation />,
+     },
     ],
   },
 ]);
