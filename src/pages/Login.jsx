@@ -26,6 +26,7 @@ export default function Login() {
                     navigate('/denied');
                 }
                 else{
+                    localStorage.setItem("user", JSON.stringify(user.data)); // Guarda el usuario en localStorage
                     auth.setIsAuthenticated(true); // Cambia el estado de autenticación
                     navigate('/home-consultant'); // Redirige a la página de inicio  
                 }

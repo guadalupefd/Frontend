@@ -12,6 +12,9 @@ export const REGISTER_CONSULTANT = "/consultor/register"
 export const LOGIN_CONSULTANT = "/consultor/login"
 export const FIND_CONSULTANT = "/consultor/findConsultor"
 
+export const REGISTER_DONATION = "/payment/mp-preference"
+export const WRITE_DIARY = "/diary"
+
 export const service = {
     registerUser: async (username, mail, password, token) => await api.post(REGISTER_USER, {username, mail, password, token}),
     loginUser: async (mail, password) => await api.post(LOGIN_USER, {mail, password}),
@@ -25,4 +28,6 @@ export const service = {
     loginConsultant: async (mail, password) => await api.post(LOGIN_CONSULTANT, {mail, password}),
     findConsultant: async (mail) => await api.post(FIND_CONSULTANT, {mail}),
     getConsultantImage: async (id) => await api.get(`/consultor/${id}/image`, {responseType: 'blob'}),
+    registerDonation: async (unitPrice) => await api.post(REGISTER_DONATION, {unitPrice}),
+    writeDiary: async (userId, content) => await api.post(WRITE_DIARY, {userId, content}),
 }
