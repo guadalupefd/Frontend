@@ -12,6 +12,7 @@ import Denied from "../pages/Denied.jsx"
 import HomeConsultant from "../pages/HomeConsultant.jsx"
 import Webcam from "../pages/Webcam.jsx";
 import VerifyFacePage from "../pages/VerifyFace.jsx";
+import Diary from "../pages/Diary.jsx";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
         path: "/home-consultant",
         element: <HomeConsultant />,
       },
+      {
+        path: "/diary",
+        element: <Diary />,
+      },
+      // {
+      //   path: "/donation",
+      //   element: <Diary />,
+      // },
     ],
   },
 ]);
