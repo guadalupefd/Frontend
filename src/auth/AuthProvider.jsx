@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { getAuth, GoogleAuthProvider, signOut, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signOut, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 import router from "../router/router";
 import { service } from "../services/api";
 import "../firebaseConfig";
@@ -78,6 +78,69 @@ export function AuthProvider({ children }) {
         }
     };
 
+    const loginWithFacebook = async () => {
+        const provider = new FacebookAuthProvider();
+        try {
+            signInWithPopup(auth, provider).then(async (result) => {
+                const facebookUser = result.user;
+                console.log(`Resultado: ${result} - Usuario facebook: ${facebookUser}`);
+
+                const credential = FacebookAuthProvider.credentialFromResult(result);
+                const accessToken = credential.accessToken;
+
+                const userData = {
+                    username: facebookUser.displayName,
+                    mail: facebookUser.email,
+                    password: facebookUser.uid,
+                };
+
+                if (localStorage.getItem("userType") == "consultant"){
+                    try {
+                        const consultor = await service.findConsultant(facebookUser.email);
+                        if (consultor.data) {
+                            if (consultor.data.reported) {
+                                router.navigate('/denied');
+                            }
+                            else {
+                                localStorage.setItem("consultor", JSON.stringify(consultor.data));
+                                router.navigate('/verify-face');  
+                            }
+                        }
+                        else if (!consultor.data) {
+                            localStorage.setItem("user",JSON.stringify(userData));
+                            router.navigate('/token');
+                        }
+                    } catch (err) {
+                                setError("Error al iniciar sesión");
+                    }
+                }
+                if (localStorage.getItem("userType") == "user"){
+                    try {
+                        const user = await service.findUser(facebookUser.email);
+                        if (user.data) {
+                            if (user.data.reported){
+                                navigate('/denied');
+                            }
+                            else{
+                                setIsAuthenticated(true);
+                                navigate('/home');
+                            }
+                        }
+                        else if (!user.data){
+                            localStorage.setItem("user",JSON.stringify(userData));
+                            router.navigate('/token');
+                        }
+                    } catch (err) {
+                        console.log(err);
+                        setError("Error al iniciar sesión.");
+                    }
+                }
+            });
+        } catch (error) {
+            console.error("Error en autenticación con Facebook:", error);
+        }
+    }
+
 
     // 🔹 Logout (cerrar sesión)
     const logout = async () => {
@@ -90,7 +153,7 @@ export function AuthProvider({ children }) {
     };
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, loginWithGoogle, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, loginWithGoogle, logout, loginWithFacebook }}>
             {children}
         </AuthContext.Provider>
     );
