@@ -51,11 +51,11 @@ export function AuthProvider({ children }) {
                         console.log(user);
                         if (user.data) {
                             if (user.data.reported){
-                                navigate('/denied');
+                                router.navigate('/denied');
                             }
                             else{
                                 setIsAuthenticated(true);
-                                navigate('/home');
+                                router.navigate('/home');
                             }
                         }
                         else if (!user.data){
@@ -119,11 +119,11 @@ export function AuthProvider({ children }) {
                         const user = await service.findUser(facebookUser.email);
                         if (user.data) {
                             if (user.data.reported){
-                                navigate('/denied');
+                                router.navigate('/denied');
                             }
                             else{
                                 setIsAuthenticated(true);
-                                navigate('/home');
+                                router.navigate('/home');
                             }
                         }
                         else if (!user.data){
