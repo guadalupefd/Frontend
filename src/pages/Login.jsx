@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import GoogleLoginButton from "../components/GoogleLoginButton";
 import { service } from "../services/api";
 import { useAuth } from "../auth/AuthProvider";
+import FacebookLoginButton from "../components/FacebookLoginButton";
 
 export default function Login() {
     const [mail, setMail] = useState('');
@@ -66,6 +67,8 @@ export default function Login() {
             </form>
 
             <GoogleLoginButton />
+
+            <FacebookLoginButton />
 
             <Link to='/signup'><h6>¿No tienes una cuenta? Regístrate</h6></Link>  
             </div>
