@@ -1,4 +1,5 @@
 import axios from "axios";
+import { data } from "react-router-dom";
 
 export const api = axios.create({
     baseURL: "https://backend-production-2c60.up.railway.app"
@@ -13,7 +14,8 @@ export const LOGIN_CONSULTANT = "/consultor/login"
 export const FIND_CONSULTANT = "/consultor/findConsultor"
 
 export const REGISTER_DONATION = "/payment/mp-preference"
-export const WRITE_DIARY = "/diary"
+export const UPLOAD_DIARY = "/diary"
+export const CHARGE_EMOTION = "/Select-Emotion"
 
 export const service = {
     registerUser: async (username, mail, password, token) => await api.post(REGISTER_USER, {username, mail, password, token}),
@@ -29,5 +31,6 @@ export const service = {
     findConsultant: async (mail) => await api.post(FIND_CONSULTANT, {mail}),
     getConsultantImage: async (id) => await api.get(`/consultor/${id}/image`, {responseType: 'blob'}),
     registerDonation: async (unitPrice) => await api.post(REGISTER_DONATION, {unitPrice}),
-    writeDiary: async (userId, content) => await api.post(WRITE_DIARY, {userId, content}),
+    uploadDiary: async (userId,data) => await api.post(UPLOAD_DIARY, {userId,data}),
+    chargeEmotion: async (userId,emotion) => await api.post(CHARGE_EMOTION, {userId,emotion}),
 }

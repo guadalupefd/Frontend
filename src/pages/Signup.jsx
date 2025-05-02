@@ -3,7 +3,7 @@ import DefaultLayout from "../layout/DefaultLayout";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import GoogleLoginButton from "../components/GoogleLoginButton";
-
+import SelectEmotion from "../layout/SelectEmotion.jsx";
 export default function Signup(){
     const [username, setUsername] = useState("");
     const [mail, setMail] = useState("");
@@ -56,7 +56,7 @@ export default function Signup(){
 
                     <button type="submit">Registrar</button>
                 </form>
-
+                <SelectEmotion/>
                 <GoogleLoginButton />
 
                 <Link to='/login'><h6>¿Ya tenés una cuenta? Inicia sesión</h6></Link>  
