@@ -14,7 +14,7 @@ import Token from "../pages/Token.jsx";
 import UnprotectedRoute from "../pages/UnprotectedRoute.jsx";
 import VerifyFacePage from "../pages/VerifyFace.jsx";
 import Webcam from "../pages/Webcam.jsx";
-import EjercicesEmotion from "../pages/EjerciceEmotion.jsx";
+import SelectEmotion from "../layout/SelectEmotion.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -57,8 +57,12 @@ const router = createBrowserRouter([
         element: <Denied />,
       },
       {
-        path: "/EjerciceEmotion",
-        element: <EjercicesEmotion />,
+        path: "/diary",
+        element: <Diary />,
+      },
+      {
+        path: "/Select-Emotion",
+        element: <SelectEmotion/>
       },
     ],
   },
@@ -74,10 +78,6 @@ const router = createBrowserRouter([
       {
         path: "/home-consultant",
         element: <HomeConsultant />,
-      },
-      {
-        path: "/diary",
-        element: <Diary />,
       },
       {
         path: "/donation",

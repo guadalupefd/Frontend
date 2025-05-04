@@ -6,7 +6,7 @@ import GoogleLoginButton from "../components/GoogleLoginButton";
 import { service } from "../services/api";
 import { useAuth } from "../auth/AuthProvider";
 import FacebookLoginButton from "../components/FacebookLoginButton";
-
+import SelectEmotion from "../layout/SelectEmotion.jsx";
 export default function Login() {
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
@@ -65,14 +65,13 @@ export default function Login() {
                 
                 <button type="submit">Iniciar Sesión</button>
             </form>
-
+            <SelectEmotion/>
             <GoogleLoginButton />
 
             <FacebookLoginButton />
 
             <Link to='/signup'><h6>¿No tienes una cuenta? Regístrate</h6></Link>  
             </div>
-            
         </DefaultLayout>
     );
 }

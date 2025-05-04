@@ -5,8 +5,8 @@ export default function DefaultLayout({ children }) {
 
     return (
         <>
-            <header className="bg-gray-100 shadow-md p-4">
-                <nav style={{ display: "flex", justifyContent: "space-between", width:"15%"}}>
+            <header>
+                <nav style={{width: "15%"}}>
                     <h1 className="text-xl font-bold">Vudip</h1>
                     <ul className="flex gap-4">
                         <li>
@@ -23,6 +23,7 @@ export default function DefaultLayout({ children }) {
                             <Link to="/donation">Donaciones</Link>
                         </li>
                         <li>
+                            <Link to="/Select-Emotion">estado_emocional</Link>
                             <Link to="/EjerciceEmotion">Ver ejercicios</Link>
                         </li>
                     </ul>

@@ -1,40 +1,49 @@
 import { useEffect, useState } from "react";
-import { service } from "../services/api";
 import router from "../router/router";
+import { service } from "../services/api";
 
-export default function DiaryInput({ onSubmit }) {
-    const [entry, setEntry] = useState("");
+export default function DiaryInput({setEntry,entry  }) {
+  // const [entry, setEntry] = useState("");
 
-    useEffect(() => {
-        if (localStorage.getItem("userType") === "consultant") {
-            router.navigate("/home");
-        }
-    }, []);
+  useEffect(() => {
+    if (localStorage.getItem("userType") === "consultant") {
+      router.navigate("/home");
+    }
+  }, []);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (entry.trim() === "") return;
-        onSubmit(entry);
-        service.writeDiary(JSON.parse(localStorage.getItem("user")).userId, entry).then((response) => {
-            console.log(response);
-        })
-        setEntry("");
-    };
+  // const handleSubmit = (e) => {
+    // e.preventDefault();
+    // if (entry.trim() === "") return;
+    // service
+    //   .writeDiary(JSON.parse(localStorage.getItem("user")).userId, entry)
+    //   .then((response) => {
+    //     console.log(response);
+    //   });
+    // setEntry("");
+  // };
 
-    return (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <textarea
-                className="border rounded p-2 w-full h-40 resize-none"
-                placeholder="Escribe tu entrada aquí..."
-                value={entry}
-                onChange={(e) => setEntry(e.target.value)}
-            />
-            <button
-                type="submit"
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded self-end"
-            >
-                Enviar
-            </button>
-        </form>
-    );
+  return (
+    // <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <textarea
+        required
+        placeholder="Escribe tu entrada aquí..."
+        value={entry}
+        title="Escribe como fue tu día (obligatorio)"
+        onChange={(e) => {
+          setEntry(e.target.value);
+          //onSubmit(entry);
+        }}
+
+        style={{
+          border: "1px solid #ccc",
+          borderRadius: "4px",
+          padding: "10px",
+          fontSize: "16px",
+          width: "300px",
+          height: "280px",
+          resize: "none",
+        }}
+      />
+    // </form>
+  );
 }
