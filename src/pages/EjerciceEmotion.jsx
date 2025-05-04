@@ -1,0 +1,15 @@
+import DefaultLayout from "../layout/DefaultLayout.jsx";
+import EjerciceScreen from "../components/EjerciceScreen.jsx";
+
+export default function EjercicesEmotion() {
+    return (
+        <DefaultLayout>
+        <div style={{ flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh" }}>
+        <h1>Ejercicio de emociones</h1>
+        <div style={{ width: "100%", maxWidth: "600px", padding: "20px", backgroundColor: "#f0f0f0", borderRadius: "8px", boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}>
+        <EjerciceScreen />
+        </div>
+        </div>
+        </DefaultLayout>
+    );
+}

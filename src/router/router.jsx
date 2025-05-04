@@ -29,12 +29,12 @@ const router = createBrowserRouter([
         element: <Token />,
       },
       {
-          path: "/login",
-          element: <Login />,
-      },            
+        path: "/login",
+        element: <Login />,
+      },
       {
-          path: "/signup",
-          element: <Signup />,
+        path: "/signup",
+        element: <Signup />,
       },
       {
         path: "/login-consultant",
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-
+  
   {
     path: "/",
     element: <ProtectedRoute />,
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
       {
         path: "/donation",
         element: <Donation />,
-     },
+      },
     ],
   },
 ]);

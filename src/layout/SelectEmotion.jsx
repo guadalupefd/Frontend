@@ -33,9 +33,9 @@ export default function SelectorEmocional() {
                         {emocion.nombre}
                         
                     </button>
-                    </li>
+                </li>
             ))}
-            </ul>
+        </ul>
       )}
     </div>
   );

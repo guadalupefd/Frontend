@@ -17,7 +17,7 @@ export default function Welcome(){
 
     return(
         <>
-            <h1>Bienvenido a TalkGu</h1>
+            <h1>Bienvenido a Vudip</h1>
             <button onClick={user}>Quiero hablar</button>
             <button onClick={consultant}>Soy consultor</button>
         </>

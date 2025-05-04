@@ -24,6 +24,7 @@ export default function DefaultLayout({ children }) {
                         </li>
                         <li>
                             <Link to="/Select-Emotion">estado_emocional</Link>
+                            <Link to="/EjerciceEmotion">Ver ejercicios</Link>
                         </li>
                     </ul>
                 </nav>
