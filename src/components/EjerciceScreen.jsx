@@ -36,11 +36,12 @@ const ejerciciosPorEmocion = {
 
 export default function PaginaEjercicios() {
   const [emotion, setEmotion] = useState(null);
-
+  
   const ejercicios = ejerciciosPorEmocion[emotion] || [];
 
   return (
     <div>
+      {!emotion ? alert("ingrese una emocion para poder ver sus ejercicios correspondientes"): null}
       {!emotion ? 
         <SelectEmotion onSelect={setEmotion} />
        : 
