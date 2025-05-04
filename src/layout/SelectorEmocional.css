@@ -1,0 +1,60 @@
+.contenedor-flex {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  width: 15rem;
+}
+
+.boton {
+  background-color: #4caf50; /* Verde suave */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  text-align: center; /* Texto centrado */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor en forma de mano */
+
+}
+
+.boton:hover {
+  background-color: #45a049; /* Verde más oscuro al pasar el mouse */
+}
+
+.boton:active {
+  background-color: #3e8e41; /* Verde aún más oscuro al hacer clic */
+  transform: translateY(5px); /* Mueve el botón hacia abajo al hacer clic */
+}
+
+.boton-emocion {
+  background-color: #0099ff; /* Azul medio */
+  color: #fff; /* Texto blanco */
+  border: none;
+  font-size: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  margin: 7px;
+}
+
+.boton-emocion:hover {
+  background-color: #1c8bd4; /* Azul más oscuro al hacer hover */
+  transform: translateY(2px); /* Efecto de levantamiento */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.ul-emociones {
+  margin: 0; /* Sin margen */
+  list-style: none; /* Sin viñetas */
+  padding: 0; /* Sin relleno */
+  
+}

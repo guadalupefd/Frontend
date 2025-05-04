@@ -1,20 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "../pages/Login.jsx";
-import Signup from "../pages/Signup.jsx";
-import Home from "../pages/Home.jsx";
-import Start from "../pages/Start.jsx";
-import ProtectedRoute from "../pages/ProtectedRoute.jsx";
-import UnprotectedRoute from "../pages/UnprotectedRoute.jsx";
-import Token from "../pages/Token.jsx";
-import LoginConsultant from "../pages/LoginConsultant.jsx"
-import SignupConsultant from "../pages/SignupConsultant.jsx"
-import Denied from "../pages/Denied.jsx"
-import HomeConsultant from "../pages/HomeConsultant.jsx"
-import Webcam from "../pages/Webcam.jsx";
-import VerifyFacePage from "../pages/VerifyFace.jsx";
+import Denied from "../pages/Denied.jsx";
 import Diary from "../pages/Diary.jsx";
 import Donation from "../pages/Donation.jsx";
-
+import Home from "../pages/Home.jsx";
+import HomeConsultant from "../pages/HomeConsultant.jsx";
+import Login from "../pages/Login.jsx";
+import LoginConsultant from "../pages/LoginConsultant.jsx";
+import ProtectedRoute from "../pages/ProtectedRoute.jsx";
+import Signup from "../pages/Signup.jsx";
+import SignupConsultant from "../pages/SignupConsultant.jsx";
+import Start from "../pages/Start.jsx";
+import Token from "../pages/Token.jsx";
+import UnprotectedRoute from "../pages/UnprotectedRoute.jsx";
+import VerifyFacePage from "../pages/VerifyFace.jsx";
+import Webcam from "../pages/Webcam.jsx";
+import EjercicesEmotion from "../pages/EjerciceEmotion.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,12 +29,12 @@ const router = createBrowserRouter([
         element: <Token />,
       },
       {
-          path: "/login",
-          element: <Login />,
-      },            
+        path: "/login",
+        element: <Login />,
+      },
       {
-          path: "/signup",
-          element: <Signup />,
+        path: "/signup",
+        element: <Signup />,
       },
       {
         path: "/login-consultant",
@@ -56,9 +56,13 @@ const router = createBrowserRouter([
         path: "/denied",
         element: <Denied />,
       },
+      {
+        path: "/EjerciceEmotion",
+        element: <EjercicesEmotion />,
+      },
     ],
   },
-
+  
   {
     path: "/",
     element: <ProtectedRoute />,
@@ -78,7 +82,7 @@ const router = createBrowserRouter([
       {
         path: "/donation",
         element: <Donation />,
-     },
+      },
     ],
   },
 ]);
