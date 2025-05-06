@@ -9,15 +9,19 @@ export default function Diary() {
 
   const handleSend = () => {
     if (entry.trim() === "") return;
-    const data = {
-      Texto: entry,
-      Imagen: image,
-    };
+    const usuario = JSON.parse(localStorage.getItem("user"));
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("userId", usuario.userId);
+    formData.append("content", entry);
+
     setEntry("");
     setImage(null);
+
     console.log(data)
-      service.uploadDiary(JSON.parse(localStorage.getItem("user")).userId,data).then((response) => {console.log(response)});
+    service.uploadDiary(formData).then((response) => {console.log(response)});
   };
+  
   return (
     <DefaultLayout>
       <div>
