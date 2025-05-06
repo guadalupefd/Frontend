@@ -1,12 +1,15 @@
 import { useState } from "react";
-import "./SelectorEmocional.css";
 import { service } from "../services/api.js";
+import "./SelectorEmocional.css";
 
 const emociones = [
   { id: 1, name: "Alegría" },
   { id: 2, name: "Tristeza" },
   { id: 3, name: "Ira" },
 ];
+export default function SelectorEmocional({ onSelect }) {
+  const [desplegado, setDesplegado] = useState(false);
+  const [seleccionada, setSeleccionada] = useState(null);
 
 const handleSelectEmotion = (emocion) => {
   setSeleccionada(emocion);
@@ -16,13 +19,14 @@ const handleSelectEmotion = (emocion) => {
   service.changeEmotion(userId, emocion);
 };
 
-export default function SelectorEmocional() {
-  const [desplegado, setDesplegado] = useState(false);
-  const [seleccionada, setSeleccionada] = useState(null);
   return (
     <div className="contenedor-flex">
       <button className="boton" onClick={() => setDesplegado(!desplegado)}>
-        {desplegado ? "ocultar seleccion" : (seleccionada ? seleccionada.name : "Seleccionar emoción")}
+        {desplegado
+          ? "ocultar seleccion"
+          : seleccionada
+          ? seleccionada.nombre
+          : "Seleccionar emoción"}
       </button>
       {desplegado && (
         <ul className="ul-emociones">
@@ -30,8 +34,9 @@ export default function SelectorEmocional() {
             <li key={index}>
               <button
                 onClick={() => handleSelectEmotion(emocion)}
-                className="boton-emocion">
-                {emocion.name}
+                className="boton-emocion"
+              >
+                {emocion.nombre}
               </button>
             </li>
           ))}

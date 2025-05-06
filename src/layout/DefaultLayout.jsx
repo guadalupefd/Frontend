@@ -23,8 +23,8 @@ export default function DefaultLayout({ children }) {
                             <Link to="/donation">Donaciones</Link>
                         </li>
                         <li>
-                            <Link to="/Select-Emotion">estado_emocional</Link>
-                            <Link to="/EjerciceEmotion">Ver ejercicios</Link>
+                            
+                            <Link to="/EjerciceScreen">Ver ejercicios</Link>
                         </li>
                     </ul>
                 </nav>
