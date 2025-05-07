@@ -37,6 +37,8 @@ export const service = {
                 'Content-Type': 'multipart/form-data',
             },
         }),
-    getEmotionalExercises: async (emotion) => await api.get(`${routes.GET_EXERCISES}/${emotion}`)    
+    getEmotionalExercises: async (emotion) => await api.get(`${routes.GET_EXERCISES}/${emotion}`),
+
+    getDashboard: async (userId) => await api.get(`${routes.GET_DASHBOARD}/${userId}/user`),
          
 }

@@ -9,5 +9,6 @@ export const routes = {
     UPLOAD_DIARY: "/diary",
     CHANGE_EMOTION: "/emotional/state",
     GET_EXERCISES: "/emotional/exercises",
-    UPLOAD_IMAGE: "/image/upload"
+    UPLOAD_IMAGE: "/image/upload",
+    GET_DASHBOARD: "/follow",
 }
