@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { service } from "../services/api";
-import "..styles/PaginaEjercicios.css";
+import "../styles/PaginaEjercicios.css";
 
 export default function PaginaEjercicios() {
   const [emotion, setEmotion] = useState(null);
