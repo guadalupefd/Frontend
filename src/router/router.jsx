@@ -16,6 +16,7 @@ import VerifyFacePage from "../pages/VerifyFace.jsx";
 import Webcam from "../pages/Webcam.jsx";
 import EjercicesEmotion from "../pages/EjerciceEmotion.jsx";
 import EmotionalReminder from "../pages/EmotionalReminder.jsx"
+import Dashboard from "../pages/Dashboard.jsx";
 
 
 const router = createBrowserRouter([
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
       {
         path: "/emotionalReminder",
         element: <EmotionalReminder />
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       }
     ],
   },

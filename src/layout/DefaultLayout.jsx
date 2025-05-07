@@ -24,6 +24,9 @@ export default function DefaultLayout({ children }) {
                                 <li>
                                     <Link to="/emotionalReminder">Recordatorio emocional</Link>
                                 </li>
+                                <li>
+                                    <Link to="/dashboard">Dashboard</Link>
+                                </li>
                             </ul>
                         )}
 
