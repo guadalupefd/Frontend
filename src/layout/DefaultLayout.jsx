@@ -14,18 +14,23 @@ export default function DefaultLayout({ children }) {
                         </li>
 
                         {userRole === "user" && (
-                            <li>
-                                <Link to="/diary">Diario</Link>
-                            </li>
+                            <ul>
+                                <li>
+                                    <Link to="/diary">Diario</Link>
+                                </li>
+                                <li>
+                                    <Link to="/EjerciceScreen">Ver ejercicios</Link>
+                                </li>
+                                <li>
+                                    <Link to="/emotionalReminder">Recordatorio emocional</Link>
+                                </li>
+                            </ul>
                         )}
 
                         <li>
                             <Link to="/donation">Donaciones</Link>
                         </li>
-                        <li>
-                            
-                            <Link to="/EjerciceScreen">Ver ejercicios</Link>
-                        </li>
+                        
                     </ul>
                 </nav>
             </header>

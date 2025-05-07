@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { getAuth, GoogleAuthProvider, signOut, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 import router from "../router/router";
 import { service } from "../services/api";
-import "../firebaseConfig";
+import "../services/firebaseConfig";
 
 const AuthContext = createContext();
 

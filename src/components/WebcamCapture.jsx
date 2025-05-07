@@ -98,5 +98,5 @@ export default function WebcamCapture() {
             {detecting ? "Detectando..." : "Registrar rostro"}
           </button>
         </div>
-      );
+    );
 }

@@ -14,7 +14,10 @@ import Token from "../pages/Token.jsx";
 import UnprotectedRoute from "../pages/UnprotectedRoute.jsx";
 import VerifyFacePage from "../pages/VerifyFace.jsx";
 import Webcam from "../pages/Webcam.jsx";
-import EjerciceScreen from "../components/EjerciceScreen";
+import EjercicesEmotion from "../pages/EjerciceEmotion.jsx";
+import EmotionalReminder from "../pages/EmotionalReminder.jsx"
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -56,10 +59,6 @@ const router = createBrowserRouter([
         path: "/denied",
         element: <Denied />,
       },
-      {
-        path: "/EjerciceScreen",
-        element: <EjerciceScreen/>
-      },
     ],
   },
   
@@ -83,6 +82,14 @@ const router = createBrowserRouter([
         path: "/donation",
         element: <Donation />,
       },
+      {
+        path: "/EjerciceScreen",
+        element: <EjercicesEmotion />, 
+      },
+      {
+        path: "/emotionalReminder",
+        element: <EmotionalReminder />
+      }
     ],
   },
 ]);

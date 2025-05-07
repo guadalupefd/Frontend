@@ -1,23 +1,26 @@
 import { useState } from "react";
 import { service } from "../services/api.js";
-import "./SelectorEmocional.css";
+import "../styles/SelectorEmocional.css";
 
 const emociones = [
-  { nombre: "alegria" },
-  { nombre: "tristeza" },
-  { nombre: "ira" },
+  { id: 1, name: "Alegre" },
+  { id: 2, name: "Triste" },
+  { id: 3, name: "Enojado" },
+  { id: 4, name: "Miedo" },
+  { id: 5, name: "Sorprendido" },
+  { id: 8, name: "Confuso" }
 ];
 export default function SelectorEmocional({ onSelect }) {
   const [desplegado, setDesplegado] = useState(false);
   const [seleccionada, setSeleccionada] = useState(null);
 
-  const handleSelectEmotion = (emocion) => {
-    setSeleccionada(emocion);
-    setDesplegado(false);
-    onSelect(emocion.nombre);
-    const userId = JSON.parse(localStorage.getItem("user")).userId;
-    service.chargeEmotion(userId, emocion);
-  };
+const handleSelectEmotion = (emocion) => {
+  setSeleccionada(emocion);
+  setDesplegado(false);
+  const userId = JSON.parse(localStorage.getItem("user")).userId;
+  localStorage.setItem("emotion", JSON.stringify({ id: emocion.id, name: emocion.name }));
+  service.changeEmotion(userId, emocion.name);
+};
 
   return (
     <div className="contenedor-flex">
@@ -25,7 +28,7 @@ export default function SelectorEmocional({ onSelect }) {
         {desplegado
           ? "ocultar seleccion"
           : seleccionada
-          ? seleccionada.nombre
+          ? seleccionada.name
           : "Seleccionar emoción"}
       </button>
       {desplegado && (
@@ -36,7 +39,7 @@ export default function SelectorEmocional({ onSelect }) {
                 onClick={() => handleSelectEmotion(emocion)}
                 className="boton-emocion"
               >
-                {emocion.nombre}
+                {emocion.name}
               </button>
             </li>
           ))}
