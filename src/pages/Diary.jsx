@@ -18,7 +18,7 @@ export default function Diary() {
     setEntry("");
     setImage(null);
 
-    console.log(data)
+    console.log(formData)
     service.uploadDiary(formData).then((response) => {console.log(response)});
   };
   
