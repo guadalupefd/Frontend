@@ -1,4 +1,4 @@
-import EmotionalReminderPhoto from "../components/UploademotionalPhoto";
+import EmotionalReminderPhoto from "../components/UploadEmotionalPhoto.jsx";
 
 export default function EmotionalReminder() {
     return (
