@@ -37,5 +37,6 @@ export const service = {
                 'Content-Type': 'multipart/form-data',
             },
         }),
+    getEmotionalExercises: async (emotion) => await api.get(`${routes.GET_EXERCISES}/${emotion}`)    
          
 }
