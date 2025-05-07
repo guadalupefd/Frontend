@@ -17,9 +17,9 @@ export default function SelectorEmocional({ onSelect }) {
 const handleSelectEmotion = (emocion) => {
   setSeleccionada(emocion);
   setDesplegado(false);
-  const userId = JSON.parse(localStorage.getItem("user")).userId;
+  const user = JSON.parse(localStorage.getItem("user"));
   localStorage.setItem("emotion", JSON.stringify({ id: emocion.id, name: emocion.name }));
-  service.changeEmotion(userId, emocion.name);
+  service.changeEmotion(parseInt(user.userId), emocion.name);
 };
 
   return (

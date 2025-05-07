@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SelectorEmocional from "./SelectEmotion";
 
 export default function DefaultLayout({ children }) {
     const userRole = localStorage.getItem("userType")
@@ -39,6 +40,7 @@ export default function DefaultLayout({ children }) {
             </header>
 
             <main className="p-4 max-w-4xl mx-auto">{children}</main>
+            <SelectorEmocional />
         </>
     );
 }

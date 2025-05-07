@@ -30,7 +30,7 @@ export const service = {
             },
         }),
     
-    changeEmotion: async (userId,emotion) => await api.post(routes.CHANGE_EMOTION, {userId,emotion}),
+    changeEmotion: async (userId,emotionName) => await api.post(routes.CHANGE_EMOTION, {userId,emotionName}),
     uploadEmotionalImage: async (formData) => 
         await api.post(routes.UPLOAD_IMAGE, formData, {
             headers: {
