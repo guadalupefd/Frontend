@@ -63,17 +63,16 @@ const router = createBrowserRouter([
         element: <Denied />,
       },
       {
-        path: "/EjerciceScreen",
-        element: <EjercicesEmotion />, 
+        path: "/nosotros",
+        element: <Nosotros />,
       },
-      {
-        path: "/emotionalReminder",
-        element: <EmotionalReminder />
-      },
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
-      },
+    ],
+  },
+  
+  {
+    path: "/",
+    element: <ProtectedRoute />,
+    children: [
       {
         path: "/home",
         element: <Home />,
@@ -87,6 +86,10 @@ const router = createBrowserRouter([
         element: <HomeConsultant />,
       },
       {
+        path: "/donation",
+        element: <Donation />,
+      },
+      {
         path: "/Logout",
         element: <Logout />,
       },
@@ -95,44 +98,17 @@ const router = createBrowserRouter([
         element: <Donation />,
       },
       {
-        path: "/nosotros",
-        element: <Nosotros />,
+        path: "/EjerciceScreen",
+        element: <EjercicesEmotion />, 
       },
-    ],
-  },
-  
-  {
-    path: "/",
-    element: <ProtectedRoute />,
-    children: [
-      // {
-      //   path: "/home",
-      //   element: <Home />,
-      // },
-      // {
-      //   path: "/diary",
-      //   element: <Diary />,
-      // },
-      // {
-      //   path: "/home-consultant",
-      //   element: <HomeConsultant />,
-      // },
-      // {
-      //   path: "/donation",
-      //   element: <Donation />,
-      // },
-      // {
-      //   path: "/EjerciceScreen",
-      //   element: <EjercicesEmotion />, 
-      // },
-      // {
-      //   path: "/emotionalReminder",
-      //   element: <EmotionalReminder />
-      // },
-      // {
-      //   path: "/dashboard",
-      //   element: <Dashboard />,
-      // }
+      {
+        path: "/emotionalReminder",
+        element: <EmotionalReminder />
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      }
     ],
   },
 ]);
