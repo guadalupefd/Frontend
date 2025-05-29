@@ -1,22 +1,41 @@
 #root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 }
 
 body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 0;
+  color: #6B5A7B;
+  font-size: 20px;
   margin: 0;
 }
 
 main {
+  background-image: url(/public/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;       
+  background-position: center; 
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100vh; 
   background-color: #f5f5f5;
+}
+
+h1{
+  color: #7b4aff;
+  font-size: 50px;
+}
+
+p{
+  width: max-content;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  padding-bottom: 15px;
 }
 
 .centrar{
@@ -39,24 +58,9 @@ label {
   display: block;
 }
 
-.form {
-  width: 400px;
-  margin: 0 auto;
-}
-
-input[type="email"],
-[type="password"], 
-[type="text"] {
-  display: block;
-  padding: 10px;
-  box-sizing: border-box;
-  width: 100%;
-  margin: 5px 0 10px 0;
-}
-
 input[type="button"],
 button {
-  background-color: rgb(39, 131, 212);
+  background-color: #7b4aff;
   padding: 10px;
   margin: 10px;
   border: 0;
@@ -65,23 +69,43 @@ button {
   color: white;
 }
 
+input{
+    border-radius: 15px;
+    background-color: #F8F5FF;
+    border: 3px solid #E6E0F0;
+    cursor: pointer;
+    transition: .3s ease all;
+    font-size: 17px;
+    color: rgb(122, 43, 226);
+} 
+
+input:focus { 
+    outline: none;
+    border: 3px solid hsla(260, 67%, 58%, 0.685);
+    color: rgba(104, 33, 190, 0.804);
+    box-shadow: 0 20px 35px rgba(93, 27, 191, 0.306);
+}
+
 nav {
-  background-color: #eee;
+  background-color: #c9b5ff;
+  padding-left: 10px;
   position: absolute;
   width: 100vw;
 }
 
 nav ul {
   margin: 0;
+  padding: 10px;
 }
 
 nav ul li {
   display: inline-block;
+  margin: 0;
   padding: 10px;
 }
 
 a {
-  color: rgb(97, 28, 161);
+  color: rgb(83, 17, 146);
   text-decoration: none;
 }
 
@@ -91,7 +115,12 @@ a {
 }
 
 .errorMessage {
-  background-color: #f2dede;
-  color: #a94442;
+  background-color: #f66565;
+  color: #960200;
   padding: 10px;
+}
+
+.footer{
+  background-color: #C9B5FF;
+  text-align: center;
 }

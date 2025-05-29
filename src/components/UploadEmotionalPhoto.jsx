@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+ import { useState, useEffect, useRef } from "react";
 import { service } from "../services/api";
 
 export default function EmotionalReminderPhoto() {

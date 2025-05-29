@@ -17,6 +17,8 @@ import Webcam from "../pages/Webcam.jsx";
 import EjercicesEmotion from "../pages/EjerciceEmotion.jsx";
 import EmotionalReminder from "../pages/EmotionalReminder.jsx"
 import Dashboard from "../pages/Dashboard.jsx";
+import Nosotros from "../pages/Nosotros.jsx";
+import Logout from "../pages/Logout.jsx"
 
 
 const router = createBrowserRouter([
@@ -60,13 +62,18 @@ const router = createBrowserRouter([
         path: "/denied",
         element: <Denied />,
       },
-    ],
-  },
-  
-  {
-    path: "/",
-    element: <ProtectedRoute />,
-    children: [
+      {
+        path: "/EjerciceScreen",
+        element: <EjercicesEmotion />, 
+      },
+      {
+        path: "/emotionalReminder",
+        element: <EmotionalReminder />
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
       {
         path: "/home",
         element: <Home />,
@@ -80,21 +87,52 @@ const router = createBrowserRouter([
         element: <HomeConsultant />,
       },
       {
+        path: "/Logout",
+        element: <Logout />,
+      },
+      {
         path: "/donation",
         element: <Donation />,
       },
       {
-        path: "/EjerciceScreen",
-        element: <EjercicesEmotion />, 
+        path: "/nosotros",
+        element: <Nosotros />,
       },
-      {
-        path: "/emotionalReminder",
-        element: <EmotionalReminder />
-      },
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
-      }
+    ],
+  },
+  
+  {
+    path: "/",
+    element: <ProtectedRoute />,
+    children: [
+      // {
+      //   path: "/home",
+      //   element: <Home />,
+      // },
+      // {
+      //   path: "/diary",
+      //   element: <Diary />,
+      // },
+      // {
+      //   path: "/home-consultant",
+      //   element: <HomeConsultant />,
+      // },
+      // {
+      //   path: "/donation",
+      //   element: <Donation />,
+      // },
+      // {
+      //   path: "/EjerciceScreen",
+      //   element: <EjercicesEmotion />, 
+      // },
+      // {
+      //   path: "/emotionalReminder",
+      //   element: <EmotionalReminder />
+      // },
+      // {
+      //   path: "/dashboard",
+      //   element: <Dashboard />,
+      // }
     ],
   },
 ]);

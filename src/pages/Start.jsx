@@ -1,5 +1,4 @@
 import DefaultLayout from "../layout/DefaultLayout";
-
 import { useAuth } from "../auth/AuthProvider";
 import { Navigate } from "react-router-dom";
 import Welcome from "../components/Welcome";

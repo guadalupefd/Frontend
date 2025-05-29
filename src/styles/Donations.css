@@ -1,0 +1,40 @@
+.donation-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    width: 600px;
+}
+
+.donation-card{
+    padding: 40px;
+    box-shadow: 0 20px 35px rgba(52, 0, 129, 0.288);
+    width: auto;
+    background: white;
+    border-radius: 10px;
+}
+
+.custom-input-donation{
+    background-color: #F8F5FF;
+    border-color: #E6E0F0;
+    width: 500px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
+    color: #5d3e7b;
+}
+
+.custom-botton-donation{
+    background-color: #7B4AFF;
+    border-radius: 10px;
+    margin: 10px;
+    width: 520px;
+    font-size: 18px;
+}
+
+.custom-list{
+    list-style-image: url('/public/Lista-icon.jpg');
+    align-items: center;
+    border-radius: 50%;
+}

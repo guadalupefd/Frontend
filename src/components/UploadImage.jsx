@@ -1,74 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import "../styles/diary.css";
 
-export default function ImageUploader({ setImage, image}) {
-  // const [image, setImage] = useState(null);
+export default function ImageUploader({ setImage, image }) {
   const [previewImage, setPreviewImage] = useState(null);
-  
-  const handleImageChange = (e) => {  
+
+  useEffect(() => {
+    if (!image) setPreviewImage(null);
+  }, [image]);
+
+  const handleImageChange = (e) => {
     const file = e.target.files[0];
-    //esto tengo que mandar al back
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewImage(reader.result);
-      };
+      reader.onloadend = () => setPreviewImage(reader.result);
       reader.readAsDataURL(file);
       setImage(file);
     }
   };
-  
+
   return (
-    <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
-      {previewImage ? null : (
-        <input type="file" accept="image/*" onChange={handleImageChange} />
+    <div className="image-uploader">
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+        id="imageInput"
+        hidden
+      />
+      {!previewImage && (
+        <label htmlFor="imageInput" className="choose-image-button">
+          Elegir imagen
+        </label>
       )}
-      
-      {previewImage ? <p>Vista previa de su imagen:</p> : null}
       {previewImage && (
-        <img
-          src={previewImage}
-          alt="Imagen subida"
-          style={{ width: "300px", height: "auto", borderRadius: "0.5rem" }}
-        />
+        <div className="preview-container">
+          <img src={previewImage} alt="Preview" className="preview-image" />
+          <div className="image-buttons">
+            <p className="preview-text">imagen subida</p>
+            <button
+              type="button"
+              onClick={() => setImage(null)}
+              className="delete-image-button"
+              >
+              Eliminar Imagen
+            </button>
+          </div>
+        </div>
       )}
-      <div>
-        {previewImage && (
-          <button
-            onClick={() => setImage(null)}
-            style={{
-              width: "200px",
-              height: "auto",
-              borderRadius: "8px",
-              boxShadow: "0 4px 6px rgba(8, 8, 8, 0.1)",
-              objectFit: "contain",
-              backgroundColor: "#27ae60",
-            }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = "#1e8449")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#27ae60")}
-          >
-            Eliminar Imagen
-          </button>
-        )}
-        {/* {image && (
-          <button
-            style={{
-              width: "200px",
-              height: "auto",
-              borderRadius: "8px",
-              boxShadow: "0 4px 6px rgba(8, 8, 8, 0.1)",
-              objectFit: "contain",
-              backgroundColor: "#2980b9",
-            }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = "#1f618d")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#2980b9")}
-            
-          >
-            enviar foto
-          </button>
-        )} */}
-      </div>
     </div>
   );
 }

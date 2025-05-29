@@ -3,7 +3,9 @@ import DefaultLayout from "../layout/DefaultLayout";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import GoogleLoginButton from "../components/GoogleLoginButton";
-import SelectEmotion from "../layout/SelectEmotion.jsx";
+import "../styles/Signup-Login.css"
+import "../styles/Home.css"
+
 export default function Signup(){
     const [username, setUsername] = useState("");
     const [mail, setMail] = useState("");
@@ -16,6 +18,7 @@ export default function Signup(){
             "username": username,
             "mail": mail,
             "password": password,
+            "password": password,
         }
         localStorage.setItem("user", JSON.stringify(usuario));
         navigate("/token")
@@ -23,43 +26,60 @@ export default function Signup(){
 
     return (
         <DefaultLayout>
-            <div className="form">
+            <div className="Signup-card">
+                <h1>Registrate</h1>
+                <p className="texto-donation"> Crea una cuenta para comenzar tu viaje en el bienestar emocional.</p>
                 <form onSubmit={handleSubmit}>
-                    <h1>Registrate</h1>
 
-                    <label>Nombre de Usuario</label>
-                    <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                    />
+                    <label className="formulario__label">Nombre de Usuario</label>
+                    <div className="formulario__grupo-input">
+                        <input
+                            type="text"
+                            name="username"
+                            className="formulario__input"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="TuNombre123"
+                            required
+                        />
+                    </div>
 
-                    <label>Correo</label>
-                    <input
-                        type="email"
-                        name="mail"
-                        value={mail}
-                        onChange={(e) => setMail(e.target.value)}
-                        required
-                    />
+                    <label className="formulario__label">Correo electrónico</label>
+                    <div className="formulario__grupo-input">
+                        <input
+                            type="email"
+                            name="mail"
+                            className="formulario__input"
+                            value={mail}
+                            onChange={(e) => setMail(e.target.value)}
+                            placeholder="correo@correo.com"
+                            required
+                        />
+                    </div>
 
-                    <label>Contraseña</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
 
-                    <button type="submit">Registrar</button>
+                    <label className="formulario__label">Contraseña</label>
+                    <div className="formulario__grupo-input">
+                        <input
+                            type="password"
+                            name="password"
+                            className="formulario__input"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+
+
+                    <div clasName="separador-form"><img src="../public/Separador.png" alt="Separador" /></div>
+
+                    <GoogleLoginButton />
+
+                    <button type="submit" className="button-registro">Registrar</button>
                 </form>
-                <SelectEmotion/>
-                <GoogleLoginButton />
 
-                <Link to='/login'><h6>¿Ya tenés una cuenta? Inicia sesión</h6></Link>  
+
+                <h6>¿Ya tenés una cuenta? <Link to='/login'>Inicia sesión</Link></h6>
             </div>
         </DefaultLayout>
     );

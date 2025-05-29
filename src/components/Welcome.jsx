@@ -17,9 +17,12 @@ export default function Welcome(){
 
     return(
         <>
-            <h1>Bienvenido a Vudip</h1>
-            <button onClick={user}>Quiero hablar</button>
-            <button onClick={consultant}>Soy consultor</button>
+            <div className="welcome-card">
+                <h1>¡Bienvenido a Vudip!</h1>
+                <p>Tu compañero de bienestar emocional las 24 horas del día  para una vida más plena y consciente.</p>
+                <button onClick={user} className="button-usuario-welcome">Quiero hablar</button>
+                <button onClick={consultant} className="button-consultor-welcome">Soy consultor</button>
+            </div>
         </>
     );
 }

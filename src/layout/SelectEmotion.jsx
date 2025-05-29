@@ -8,7 +8,8 @@ const emociones = [
   { id: 3, name: "Enojado" },
   { id: 4, name: "Miedo" },
   { id: 5, name: "Sorprendido" },
-  { id: 8, name: "Confuso" }
+  { id: 8, name: "Confuso" },
+
 ];
 export default function SelectorEmocional({ onSelect }) {
   const [desplegado, setDesplegado] = useState(false);
@@ -25,11 +26,7 @@ const handleSelectEmotion = (emocion) => {
   return (
     <div className="contenedor-flex">
       <button className="boton" onClick={() => setDesplegado(!desplegado)}>
-        {desplegado
-          ? "ocultar seleccion"
-          : seleccionada
-          ? seleccionada.name
-          : "Seleccionar emoción"}
+        {desplegado ? "ocultar seleccion" : (seleccionada ? seleccionada.name : "Seleccionar emoción")}
       </button>
       {desplegado && (
         <ul className="ul-emociones">

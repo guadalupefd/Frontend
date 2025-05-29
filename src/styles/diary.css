@@ -1,0 +1,166 @@
+/* Contenedor principal */
+.diary-container {
+    width: 550px;
+    height: 600px;
+    margin: 20px;
+    padding: 1.5rem;
+    background-color: #f3e8ff;
+    border-radius: 20px;
+    box-shadow: 1px 0px 20px rgba(52, 0, 129,0.288);
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #6B5A7B;
+}
+/* Título y subtítulo */
+.diary-container h1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #6203a7;
+    margin-bottom: 0.4rem;
+}
+
+.diary-container p {
+    color: #6B5A7B;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    padding-bottom: 15px;
+}
+
+/* Textarea del diario */
+.diary-textarea {
+    width: 500px;
+    height: 180px;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 16px;
+    resize: none;
+    color: #6B5A7B;
+    background-color: #fbf5ff;
+    box-shadow: 0 10px 10px rgba(62, 0, 103, 0.05);
+    margin-bottom: -1rem;
+}
+
+.diary-texto { 
+    width: 70%;
+    padding-left: 10px;
+    border-radius: 10px;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 15px;
+    padding: 0 40px 0 10px;
+    background-color: #F8F5FF;
+    border: 3px solid #E6E0F0;
+    cursor: pointer;
+    transition: 0.1s ease all;
+    font-size: 17px;
+    color: rgb(122, 43, 226);
+}
+
+.diary-textarea:focus { 
+    outline: none;
+    border: 3px solid hsla(260, 67%, 58%, 0.495);
+    color: rgba(104, 33, 190, 0.804);
+    transition: .3s ease all;
+    box-shadow: 0 20px 35px rgba(93, 27, 191, 0.242);
+}
+
+.diary-textarea::placeholder {
+    color: #6b5a7b93;
+}
+
+/* Imagen: contenedor y preview */
+.image-uploader {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+.choose-image-button {
+    background-color: #c3aafc;
+    color: #6a0dad;
+    font-weight: 500;
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s ease;
+    width: fit-content;
+    width: 87%; 
+}
+
+.choose-image-button:hover {
+    background-color: #c9b7fa;
+}
+.preview-container {
+    display: grid;  
+    align-items:center;         /* Centra horizontalmente */
+    justify-content: center;     /* Centra verticalmente */
+    gap: 1rem;
+    padding: 5%;
+    width: 87%; 
+    border-radius: 16px;
+    background-color: #faf5ff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', sans-serif;
+    max-width: 600px;
+}
+.preview-image {
+    max-width: 200px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+.image-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centrado horizontal */
+    justify-content: center;
+    gap: 0.8rem;
+    text-align: center;
+}
+
+
+.delete-image-button {
+    background-color: #f5c6cb;  
+    color: #e73734;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    width: auto;
+    height: 50px;
+
+}
+
+.delete-image-button:hover {
+    background-color: #792d34;
+
+}
+
+/* Botón principal */
+.submit-button {
+    background-color: #6a0dad;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.9rem 1.6rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 12px;
+    cursor:pointer;
+    transition: background-color 0.3s ease;
+    width: 98%; 
+    margin: 0;
+}
+
+.submit-button:hover {
+    background-color: #5a009e;
+}

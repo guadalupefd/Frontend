@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import { service } from "../services/api";
 import "../styles/PaginaEjercicios.css";
-
+import SelectorEmocional from "../layout/SelectEmotion";
 export default function PaginaEjercicios() {
   const [emotion, setEmotion] = useState(null);
   const [ejercicios, setEjercicios] = useState([]);
   const [modalEjercicio, setModalEjercicio] = useState(null);
 
   useEffect(() => {
+  try {
     const storedEmotion = JSON.parse(localStorage.getItem("emotion"));
-    if (storedEmotion) {
+    if (storedEmotion?.name) {
       setEmotion(storedEmotion.name);
       service.getEmotionalExercises(storedEmotion.name)
         .then((res) => setEjercicios(res.data))
         .catch((err) => console.error("Error cargando ejercicios:", err));
     } else {
-      alert("No se ha seleccionado ninguna emoción");
+      alert("No se ha seleccionado ninguna emoción válida");
     }
-  }, []);
+  } catch (e) {
+    console.error("Error leyendo emoción del localStorage:", e);
+    alert("Datos inválidos en almacenamiento local");
+  }
+}, []);
 
   return (
     <div className="pagina-ejercicios">
@@ -51,6 +56,7 @@ export default function PaginaEjercicios() {
           </div>
         </div>
       )}
+      
     </div>
   );
 }

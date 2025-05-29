@@ -3,7 +3,7 @@ import DefaultLayout from "../layout/DefaultLayout";
 import { service } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthProvider";
-
+import "../styles/token.css"
 export default function Token(){
 
      const [token, setToken] = useState('');
@@ -40,18 +40,20 @@ export default function Token(){
 
     return (
         <DefaultLayout>
-            <h1>Ingrese su Token</h1>
-            <form onSubmit={handleToken}>
-            <input
-                    type="text"
-                    name="token"
-                    value={token}
-                    onChange={(e) => setToken(e.target.value)}
-                    required
-                />
-                {error && <p style={{ color: "red" }}>{error}</p>}
-            <button>Validar</button>
-            </form>
+            <div className="token-container">
+                <h1>Ingrese su Token</h1>
+                <form onSubmit={handleToken}>
+                <input
+                        type="text"
+                        name="token"
+                        value={token}
+                        onChange={(e) => setToken(e.target.value)}
+                        required
+                        />
+                    {error && <p style={{ color: "red" }}>{error}</p>}
+                <button>Validar</button>
+                </form>
+            </div>
         </DefaultLayout>
     );
 }

@@ -97,7 +97,7 @@ export default function VerifyFace() {
     };
 
     return (
-        <div style={{ textAlign: "center", marginTop: "2rem" }}>
+        <div >
             <h2>Verificación facial</h2>
             {error && <p style={{ color: "red" }}>{error}</p>}
             {loading ? (
@@ -108,8 +108,8 @@ export default function VerifyFace() {
                         ref={videoRef}
                         autoPlay
                         muted
-                        width="720"
-                        height="560"
+                        width="600 "
+                        height="500"
                     />
                     <br />
                     <button onClick={verifyFace}>Verificar rostro</button>

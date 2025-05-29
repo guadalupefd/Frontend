@@ -47,12 +47,12 @@ export default function DonationInput() {
                     value={unitPrice}
                     onChange={handleChange}
                     required
-                    className={`w-full p-3 mb-2 border rounded-md focus:outline-none focus:ring-2 ${error ? 'border-red-500 focus:ring-red-400' : 'focus:ring-blue-400'}`}
+                    className="custom-input-donation"
                 />
                 {error && <p className="text-red-600 mb-4">{error}</p>}
                 <button
                     type="submit"
-                    className="w-full bg-green-600 text-white p-3 rounded-md hover:bg-green-700 transition-all"
+                    className="custom-botton-donation"
                 >
                     Donar
                 </button>
